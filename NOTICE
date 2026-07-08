@@ -1,0 +1,23 @@
+Agentix Platform
+Copyright 2026 Varadharajan
+
+This product includes infrastructure patterns adapted from the public
+reference repository:
+
+    syn-zhu/agentic-platform
+    https://github.com/syn-zhu/agentic-platform
+
+The following components are original work created for this project:
+
+  * Synapse — the LangGraph/LangChain orchestration layer (synapse/),
+    including all graph templates, the gateway-routed chat model,
+    pluggable memory (MongoDB Atlas Vector Search and EverMemOS
+    backends), tracing abstraction, A2A runtime, CRD export, and CLI.
+  * The MongoDB Atlas Vector Search memory architecture with hybrid
+    reciprocal-rank-fusion recall.
+  * All documentation, architecture diagrams, and examples under docs/
+    and synapse/examples/.
+
+This project is not affiliated with, endorsed by, or sponsored by
+MongoDB, Inc., Solo.io, the kagent project, or LangChain, Inc. All
+trademarks are the property of their respective owners.
