@@ -1,0 +1,28 @@
+# secrets & state
+*.env
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.pem
+*.key
+secrets.yaml
+
+# tooling
+.claude/
+.memory/
+.DS_Store
+*.omc/
+.superpowers/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+dist/
+*.egg-info/
+
+# Internal workspace/agent workflow files — never publish
+MY_SETUP.md
+.ai-prompts/
