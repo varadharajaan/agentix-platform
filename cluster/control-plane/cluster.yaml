@@ -1,0 +1,62 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: agentic-cp
+  namespace: default
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks: ["192.168.0.0/16"]
+    services:
+      cidrBlocks: ["10.96.0.0/12"]
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+    kind: AWSManagedCluster
+    name: agentic-cp
+  controlPlaneRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1beta2
+    kind: AWSManagedControlPlane
+    name: agentic-cp
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+kind: AWSManagedCluster
+metadata:
+  name: agentic-cp
+  namespace: default
+spec: {}
+---
+apiVersion: controlplane.cluster.x-k8s.io/v1beta2
+kind: AWSManagedControlPlane
+metadata:
+  name: agentic-cp
+  namespace: default
+spec:
+  eksClusterName: agentic-cp
+  region: us-east-1
+  version: v1.35.0
+  network:
+    vpc:
+      cidrBlock: "10.1.0.0/16"
+  associateOIDCProvider: true
+  addons:
+    - name: vpc-cni
+      version: v1.21.1-eksbuild.1
+      conflictResolution: overwrite
+    - name: coredns
+      version: v1.13.2-eksbuild.3
+      conflictResolution: overwrite
+    - name: kube-proxy
+      version: v1.35.0-eksbuild.2
+      conflictResolution: overwrite
+    - name: aws-ebs-csi-driver
+      version: v1.57.1-eksbuild.1
+      conflictResolution: overwrite
+      serviceAccountRoleARN: arn:aws:iam::268558157000:role/agentic-cp-ebs-csi-driver
+  endpointAccess:
+    public: true
+    private: true
+  bastion:
+    enabled: false
+  additionalTags:
+    project: agentic-platform
+    cluster-type: control-plane
