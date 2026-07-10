@@ -1,0 +1,161 @@
+# Workload pool — tenant agent pods, MCP servers, sandboxes
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachinePool
+metadata:
+  name: agentic-cell-1-workload
+  namespace: default
+spec:
+  clusterName: agentic-cell-1
+  replicas: 1
+  template:
+    spec:
+      clusterName: agentic-cell-1
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1beta2
+          kind: EKSConfigTemplate
+          name: agentic-cell-1-workload
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+        kind: AWSManagedMachinePool
+        name: agentic-cell-1-workload
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+kind: AWSManagedMachinePool
+metadata:
+  name: agentic-cell-1-workload
+  namespace: default
+spec:
+  amiType: AL2023_x86_64_STANDARD
+  instanceType: t3.large
+  scaling:
+    minSize: 1
+    maxSize: 10
+  diskSize: 30
+  labels:
+    node-role: workload
+  taints:
+    - key: role
+      value: workload
+      effect: no-schedule
+  capacityType: onDemand
+  additionalTags:
+    project: agentic-platform
+    role: workload
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta2
+kind: EKSConfigTemplate
+metadata:
+  name: agentic-cell-1-workload
+  namespace: default
+spec:
+  template:
+    spec: {}
+---
+# Waypoint pool — per-tenant agentgateway waypoints
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachinePool
+metadata:
+  name: agentic-cell-1-waypoint
+  namespace: default
+spec:
+  clusterName: agentic-cell-1
+  replicas: 1
+  template:
+    spec:
+      clusterName: agentic-cell-1
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1beta2
+          kind: EKSConfigTemplate
+          name: agentic-cell-1-waypoint
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+        kind: AWSManagedMachinePool
+        name: agentic-cell-1-waypoint
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+kind: AWSManagedMachinePool
+metadata:
+  name: agentic-cell-1-waypoint
+  namespace: default
+spec:
+  amiType: AL2023_x86_64_STANDARD
+  instanceType: t3.small
+  scaling:
+    minSize: 1
+    maxSize: 5
+  diskSize: 20
+  labels:
+    node-role: waypoint
+  taints:
+    - key: role
+      value: waypoint
+      effect: no-schedule
+  capacityType: onDemand
+  additionalTags:
+    project: agentic-platform
+    role: waypoint
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta2
+kind: EKSConfigTemplate
+metadata:
+  name: agentic-cell-1-waypoint
+  namespace: default
+spec:
+  template:
+    spec: {}
+---
+# Gateway pool — cell gateway (NLB-backed)
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachinePool
+metadata:
+  name: agentic-cell-1-gateway
+  namespace: default
+spec:
+  clusterName: agentic-cell-1
+  replicas: 1
+  template:
+    spec:
+      clusterName: agentic-cell-1
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1beta2
+          kind: EKSConfigTemplate
+          name: agentic-cell-1-gateway
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+        kind: AWSManagedMachinePool
+        name: agentic-cell-1-gateway
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+kind: AWSManagedMachinePool
+metadata:
+  name: agentic-cell-1-gateway
+  namespace: default
+spec:
+  amiType: AL2023_x86_64_STANDARD
+  instanceType: t3.medium
+  scaling:
+    minSize: 1
+    maxSize: 2
+  diskSize: 20
+  labels:
+    node-role: gateway
+  taints:
+    - key: role
+      value: gateway
+      effect: no-schedule
+  capacityType: onDemand
+  additionalTags:
+    project: agentic-platform
+    role: gateway
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta2
+kind: EKSConfigTemplate
+metadata:
+  name: agentic-cell-1-gateway
+  namespace: default
+spec:
+  template:
+    spec: {}
