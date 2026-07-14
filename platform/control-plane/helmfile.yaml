@@ -1,0 +1,78 @@
+repositories:
+  - name: istio
+    url: https://istio-release.storage.googleapis.com/charts
+  - name: codecentric
+    url: https://codecentric.github.io/helm-charts
+  - name: openfga
+    url: https://openfga.github.io/helm-charts
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+  - name: langfuse
+    url: https://langfuse.github.io/langfuse-k8s
+  - name: eks-charts
+    url: https://aws.github.io/eks-charts
+
+helmDefaults:
+  createNamespace: true
+  wait: true
+  timeout: 600
+
+releases:
+  - name: istio-base
+    namespace: istio-system
+    chart: istio/base
+    version: "1.29.1"
+
+  - name: istiod
+    namespace: istio-system
+    chart: istio/istiod
+    version: "1.29.1"
+    values:
+      - values/istiod-sidecar.yaml
+    needs:
+      - istio-system/istio-base
+
+  - name: aws-load-balancer-controller
+    namespace: kube-system
+    chart: eks-charts/aws-load-balancer-controller
+    values:
+      - values/aws-lb-controller.yaml
+    needs:
+      - istio-system/istiod
+
+  - name: keycloak
+    namespace: keycloak
+    chart: codecentric/keycloakx
+    version: "7.1.8"
+    values:
+      - values/keycloak.yaml
+    needs:
+      - istio-system/istiod
+
+  - name: openfga
+    namespace: openfga
+    chart: openfga/openfga
+    version: "0.2.55"
+    values:
+      - values/openfga.yaml
+    needs:
+      - istio-system/istiod
+
+  - name: clickhouse
+    namespace: langfuse
+    chart: bitnami/clickhouse
+    version: "9.4.3"
+    values:
+      - values/clickhouse.yaml
+    needs:
+      - istio-system/istiod
+
+  - name: langfuse
+    namespace: langfuse
+    chart: langfuse/langfuse
+    version: "1.5.19"
+    values:
+      - values/langfuse.yaml
+    needs:
+      - istio-system/istiod
+      - langfuse/clickhouse
