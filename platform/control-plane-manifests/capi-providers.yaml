@@ -1,0 +1,30 @@
+# CAPI Core Provider — must be installed before infrastructure providers
+apiVersion: operator.cluster.x-k8s.io/v1alpha2
+kind: CoreProvider
+metadata:
+  name: cluster-api
+  namespace: capi-system
+spec:
+  version: v1.10.1
+---
+# CAPA Infrastructure Provider — manages EKS clusters
+# configSecret provides template variables for CAPA's infrastructure-components.yaml:
+#   AWS_B64ENCODED_CREDENTIALS — empty when using IRSA (credentials come from SA token)
+#   AWS_CONTROLLER_IAM_ROLE — IAM role ARN for IRSA; template auto-generates the
+#     eks.amazonaws.com/role-arn SA annotation via bash substitution
+#   EXP_MACHINE_POOL — enables MachinePool support (required for EKS managed node groups)
+apiVersion: operator.cluster.x-k8s.io/v1alpha2
+kind: InfrastructureProvider
+metadata:
+  name: aws
+  namespace: capa-system
+spec:
+  version: v2.7.1
+  configSecret:
+    name: capa-variables
+  manager:
+    featureGates:
+      EKS: true
+      EKSEnableIAM: true
+      EKSAllowAddRoles: true
+      MachinePool: true
