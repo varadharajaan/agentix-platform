@@ -1,0 +1,29 @@
+# AWS Load Balancer Controller — installed on the obs cluster to provision the VMAuth internal NLB.
+# IRSA role: agentic-obs-aws-lb-controller (same pattern as agentic-cp).
+apiVersion: addons.cluster.x-k8s.io/v1alpha1
+kind: HelmChartProxy
+metadata:
+  name: aws-load-balancer-controller
+  namespace: default
+spec:
+  clusterSelector:
+    matchLabels:
+      observability: "true"
+  repoURL: https://aws.github.io/eks-charts
+  chartName: aws-load-balancer-controller
+  releaseName: aws-load-balancer-controller
+  namespace: kube-system
+  valuesTemplate: |
+    clusterName: agentic-obs
+    region: us-east-1
+
+    serviceAccount:
+      create: true
+      name: aws-load-balancer-controller
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::268558157000:role/agentic-obs-aws-lb-controller
+
+    vpcId: vpc-0c3f8e368600b1e56
+
+    # Avoid conflicts with Istio webhook
+    enableServiceMutatorWebhook: false
