@@ -1,0 +1,26 @@
+# AgentGateway for cell clusters — manages cell gateway + per-tenant waypoints
+# Adapted from platform/values/agentgateway.yaml
+
+# Proxy (dataplane) image
+image:
+  registry: 268558157000.dkr.ecr.us-east-1.amazonaws.com/agentic-platform
+  tag: "0.12.0-combined"
+  pullPolicy: Always
+
+# Controller image
+# Tolerate all cell node taints so controller can schedule on any node
+tolerations:
+  - operator: Exists
+
+controller:
+  image:
+    registry: 268558157000.dkr.ecr.us-east-1.amazonaws.com/agentic-platform
+    repository: agentgateway-controller
+    tag: "0.12.0-combined"
+  replicaCount: 1
+  logLevel: info
+
+# Watch tenant namespaces with this label for Gateway, HTTPRoute, Backend resources
+discoveryNamespaceSelectors:
+  - matchLabels:
+      platform.agentic.io/gateway-discovery: "true"
