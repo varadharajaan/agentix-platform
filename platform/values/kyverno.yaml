@@ -1,0 +1,114 @@
+# Kyverno — policy-based mutation & generation for the agentic platform.
+#
+# Policies (in platform/manifests/):
+#   1. kyverno-auto-expose.yaml      — auto-generates HTTPRoutes for exposed resources
+#   2. kyverno-tenant-scheduling.yaml — injects scheduling on tenant Pods
+admissionController:
+  replicas: 3
+  resources:
+    limits:
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  # Ensure at least 1 replica survives node drains
+  podDisruptionBudget:
+    enabled: true
+    minAvailable: 1
+
+  # Spread across nodes so a single node failure can't kill all replicas
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: kubernetes.io/hostname
+      whenUnsatisfiable: DoNotSchedule
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/component: admission-controller
+
+  # Grant Kyverno admission controller access to resources it needs to mutate/generate
+  rbac:
+    clusterRole:
+      extraResources:
+        - apiGroups:
+            - kagent.dev
+          resources:
+            - agents
+          verbs:
+            - get
+            - list
+            - watch
+        # HTTPRoute — needed for auto-expose generate policy validation
+        - apiGroups:
+            - gateway.networking.k8s.io
+          resources:
+            - httproutes
+          verbs:
+            - get
+            - list
+            - watch
+            - create
+            - update
+            - delete
+            - patch
+
+# ═══════════════════════════════════════════════════════
+# Background Controller — required for generate rules
+# (auto-creates HTTPRoutes from annotated resources)
+# ═══════════════════════════════════════════════════════
+backgroundController:
+  enabled: true
+  resources:
+    limits:
+      memory: 256Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+
+  rbac:
+    clusterRole:
+      extraResources:
+        # HTTPRoute — create/manage auto-generated routes
+        - apiGroups:
+            - gateway.networking.k8s.io
+          resources:
+            - httproutes
+          verbs:
+            - get
+            - list
+            - watch
+            - create
+            - update
+            - delete
+            - patch
+        # AgentgatewayBackend — read to detect ai vs mcp type
+        - apiGroups:
+            - agentgateway.dev
+          resources:
+            - agentgatewaybackends
+          verbs:
+            - get
+            - list
+            - watch
+        # Agent — read to detect exposed agents
+        - apiGroups:
+            - kagent.dev
+          resources:
+            - agents
+          verbs:
+            - get
+            - list
+            - watch
+
+# CRD Migration Hook — runs as a Job after helm upgrade.
+migration: {}
+
+cleanupController:
+  enabled: false
+
+reportsController:
+  enabled: false
+
+cleanupJobs:
+  admissionReports: {}
+  clusterAdmissionReports: {}
