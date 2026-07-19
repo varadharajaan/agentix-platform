@@ -1,0 +1,55 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMUser
+metadata:
+  name: cluster-agentic-cp
+  namespace: monitoring
+spec:
+  tokenRef:
+    name: vmuser-token-agentic-cp
+    key: token
+  targetRefs:
+    - static:
+        url: http://vmsingle-vm.monitoring.svc:8429
+      paths: ["/api/v1/write", "/insert/.*"]
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMUser
+metadata:
+  name: cluster-agentic-obs
+  namespace: monitoring
+spec:
+  tokenRef:
+    name: vmuser-token-agentic-obs
+    key: token
+  targetRefs:
+    - static:
+        url: http://vmsingle-vm.monitoring.svc:8429
+      paths: ["/api/v1/write", "/insert/.*"]
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMUser
+metadata:
+  name: cluster-agentic-cell-1
+  namespace: monitoring
+spec:
+  tokenRef:
+    name: vmuser-token-agentic-cell-1
+    key: token
+  targetRefs:
+    - static:
+        url: http://vmsingle-vm.monitoring.svc:8429
+      paths: ["/api/v1/write", "/insert/.*"]
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMUser
+metadata:
+  name: cluster-agentic-cell-2
+  namespace: monitoring
+spec:
+  tokenRef:
+    name: vmuser-token-agentic-cell-2
+    key: token
+  targetRefs:
+    - static:
+        url: http://vmsingle-vm.monitoring.svc:8429
+      paths: ["/api/v1/write", "/insert/.*"]
