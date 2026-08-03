@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "synapse-agentic"
+version = "0.1.0"
+description = "LangGraph-native orchestration layer for the Agentix agentic platform"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Varadharajan" }]
+keywords = ["langgraph", "langchain", "agents", "kubernetes", "a2a", "mcp"]
+dependencies = [
+    "langchain>=1.0.0",
+    "langchain-core>=0.3.0",
+    "langgraph>=1.0.0",
+    "langchain-openai>=0.3.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.7",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+tracing = ["langfuse>=2.50.0"]
+mcp = ["langchain-mcp-adapters>=0.1.0", "mcp>=1.9.0"]
+atlas = ["pymongo>=4.9", "langchain-voyageai>=0.1.0"]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+synapse = "synapse.cli.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/synapse"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "ASYNC", "RUF"]
