@@ -1,0 +1,65 @@
+# Deep Research agent — platform deployment manifest.
+# Regenerate with: synapse export agent:graph --image <image> --namespace <tenant-ns>
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
+  name: deep-research
+  namespace: tenant-alpha
+  annotations:
+    platform.agentic.io/expose: "true" # Kyverno auto-creates /a2a/tenant-alpha/deep-research
+spec:
+  description: "Decomposes research questions, investigates in parallel, and returns a cited synthesis."
+  type: BYO
+  byo:
+    deployment:
+      image: 268558157000.dkr.ecr.us-east-1.amazonaws.com/agentix-platform/deep-research:v0.1.0
+      replicas: 1
+      env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: SYNAPSE_AGENT_NAME
+          value: deep-research
+        - name: PORT
+          value: "8080"
+        - name: SYNAPSE_SEARCH_SERVER
+          value: tavily-search # MCP server name, resolved via the gateway
+        - name: LANGFUSE_PUBLIC_KEY
+          valueFrom:
+            secretKeyRef: { name: langfuse-api-keys, key: PUBLIC_KEY }
+        - name: LANGFUSE_SECRET_KEY
+          valueFrom:
+            secretKeyRef: { name: langfuse-api-keys, key: SECRET_KEY }
+      resources:
+        requests: { cpu: 100m, memory: 256Mi }
+        limits: { cpu: 500m, memory: 512Mi }
+  a2aConfig:
+    skills:
+      - id: deep-research
+        name: Deep Research
+        description: Multi-source investigation with a cited report
+        tags: [research, synthesis, citations]
+---
+# Only needed when using the EverMemOS memory backend (the Atlas backend
+# egresses to MongoDB Atlas over TLS :443 via the cluster's default egress).
+# Tenant NetworkPolicies are deny-by-default; EverMemOS lives in its own
+# namespace, so memory traffic needs an explicit egress allowance.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deep-research-allow-evermemos
+  namespace: tenant-alpha
+spec:
+  podSelector:
+    matchLabels:
+      app: deep-research
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: evermemos
+      ports:
+        - protocol: TCP
+          port: 1995
