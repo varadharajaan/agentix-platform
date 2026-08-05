@@ -1,0 +1,250 @@
+<svg width="1920" height="1280" viewBox="0 0 1920 1280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B0E17"/>
+      <stop offset="1" stop-color="#080A10"/>
+    </linearGradient>
+    <linearGradient id="titleGrad-dark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="0.55" stop-color="#E879F9"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="synGrad-dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="0.5" stop-color="#E879F9"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <radialGradient id="synGlow-dark" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#A78BFA" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow-dark" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="ar-blue-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#60A5FA"/>
+    </marker>
+    <marker id="ar-cyan-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#22D3EE"/>
+    </marker>
+    <marker id="ar-violet-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#A78BFA"/>
+    </marker>
+    <marker id="ar-amber-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#FBBF24"/>
+    </marker>
+    <marker id="ar-emerald-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#34D399"/>
+    </marker>
+    <marker id="ar-rose-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#FB7185"/>
+    </marker>
+    <marker id="ar-slate-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#94A3B8"/>
+    </marker>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; }
+      .title { font-size: 38px; font-weight: 700; letter-spacing: 1px; }
+      .subtitle { font-size: 18px; fill: #9AA7BC; }
+      .band-label { font-size: 15px; font-weight: 700; letter-spacing: 3px; }
+      .box { fill: rgba(255,255,255,0.028); stroke-width: 1; }
+      .box-title { font-size: 19px; font-weight: 600; fill: #E7ECF4; }
+      .box-sub { font-size: 15px; fill: #93A1B8; }
+      .edge { fill: none; stroke-width: 1.6; }
+      .edge-label { font-size: 14px; fill: #7A8AA0; }
+      .junction { fill: #34D399; }
+      .mod-title { font-size: 19px; font-weight: 600; fill: #EDE9FE; }
+      .chip { fill: #141A26; stroke-width: 1.4; }
+      .chip-num { font-size: 16px; font-weight: 700; fill: #E7ECF4; }
+      .flow-label { font-size: 13px; fill: #7A8AA0; }
+    </style>
+  </defs>
+  <rect width="1920" height="1280" rx="18" fill="url(#bgGrad-dark)"/>
+  <text x="60" y="62" class="title" fill="url(#titleGrad-dark)">AGENTIX PLATFORM</text>
+  <text x="60" y="90" class="subtitle">Multi-tenant Kubernetes infrastructure for AI agents — with a LangGraph-native intelligence layer</text>
+  <text x="1860" y="58" text-anchor="end" class="edge-label" fill="#5F6E86">EKS · Istio Ambient · AgentGateway · kagent · LangGraph · MongoDB Atlas</text>
+  <rect x="60" y="100" width="1480" height="108" rx="12" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.18)"/>
+  <text x="76" y="126" class="band-label" fill="#60A5FA">EXPERIENCE</text>
+  <rect x="60" y="136" width="464" height="60" rx="10" class="box" stroke="rgba(96,165,250,0.35)"/>
+  <rect x="60" y="136" width="3.5" height="60" rx="1.75" fill="#60A5FA"/>
+  <text x="80" y="163" class="box-title">Observability UIs</text>
+  <text x="80" y="185" class="box-sub">Langfuse · Grafana · Kiali</text>
+  <rect x="568" y="136" width="464" height="60" rx="10" class="box" stroke="rgba(96,165,250,0.35)"/>
+  <rect x="568" y="136" width="3.5" height="60" rx="1.75" fill="#60A5FA"/>
+  <text x="588" y="163" class="box-title">Consumer Apps &amp; A2A Clients</text>
+  <text x="588" y="185" class="box-sub">any A2A-compatible agent or application</text>
+  <rect x="1076" y="136" width="464" height="60" rx="10" class="box" stroke="rgba(96,165,250,0.35)"/>
+  <rect x="1076" y="136" width="3.5" height="60" rx="1.75" fill="#60A5FA"/>
+  <text x="1096" y="163" class="box-title">synapse CLI · GitOps</text>
+  <text x="1096" y="185" class="box-sub">synapse export → Agent CR → kubectl apply</text>
+  <rect x="60" y="236" width="1480" height="108" rx="12" fill="rgba(34,211,238,0.04)" stroke="rgba(34,211,238,0.18)"/>
+  <text x="76" y="262" class="band-label" fill="#22D3EE">GATEWAY &amp; IDENTITY</text>
+  <rect x="60" y="272" width="337" height="60" rx="10" class="box" stroke="rgba(34,211,238,0.35)"/>
+  <rect x="60" y="272" width="3.5" height="60" rx="1.75" fill="#22D3EE"/>
+  <text x="80" y="299" class="box-title">Keycloak</text>
+  <text x="80" y="321" class="box-sub">JWT · organization claims</text>
+  <rect x="441" y="272" width="337" height="60" rx="10" class="box" stroke="rgba(34,211,238,0.35)"/>
+  <rect x="441" y="272" width="3.5" height="60" rx="1.75" fill="#22D3EE"/>
+  <text x="461" y="299" class="box-title">AgentGateway Ingress</text>
+  <text x="461" y="321" class="box-sub">NLB · :80 · JWT-strict</text>
+  <rect x="822" y="272" width="337" height="60" rx="10" class="box" stroke="rgba(34,211,238,0.35)"/>
+  <rect x="822" y="272" width="3.5" height="60" rx="1.75" fill="#22D3EE"/>
+  <text x="842" y="299" class="box-title">OpenFGA</text>
+  <text x="842" y="321" class="box-sub">fine-grained authorization</text>
+  <rect x="1203" y="272" width="337" height="60" rx="10" class="box" stroke="rgba(34,211,238,0.35)"/>
+  <rect x="1203" y="272" width="3.5" height="60" rx="1.75" fill="#22D3EE"/>
+  <text x="1223" y="299" class="box-title">Tenant Waypoints</text>
+  <text x="1223" y="321" class="box-sub">L7 policy · credential injection</text>
+  <rect x="60" y="384" width="1480" height="252" rx="14" fill="url(#synGlow-dark)"/>
+  <rect x="60" y="384" width="1480" height="252" rx="14" fill="rgba(167,139,250,0.05)" stroke="url(#synGrad-dark)" stroke-width="2" filter="url(#softGlow-dark)"/>
+  <text x="84" y="422" style="font-size:20px; font-weight:700; letter-spacing:2.5px;" fill="url(#titleGrad-dark)">SYNAPSE — INTELLIGENCE PLANE</text>
+  <text x="84" y="446" style="font-size:15.5px; fill:#B9A8E8;">LangGraph-native orchestration — author agents as graphs, run them as platform-native workloads</text>
+  <rect x="84" y="468" width="257" height="92" rx="10" fill="rgba(167,139,250,0.07)" stroke="rgba(167,139,250,0.45)"/>
+  <rect x="84" y="468" width="3.5" height="92" rx="1.75" fill="#A78BFA"/>
+  <text x="102" y="498" class="mod-title">Agent Graph Templates</text>
+  <text x="102" y="524" class="box-sub">ReAct · Plan-Execute</text>
+  <text x="102" y="545" class="box-sub">Supervisor · Deep Research</text>
+  <rect x="377" y="468" width="257" height="92" rx="10" fill="rgba(167,139,250,0.07)" stroke="rgba(167,139,250,0.45)"/>
+  <rect x="377" y="468" width="3.5" height="92" rx="1.75" fill="#A78BFA"/>
+  <text x="395" y="498" class="mod-title">GatewayChatModel</text>
+  <text x="395" y="524" class="box-sub">LLM calls via gateway</text>
+  <text x="395" y="545" class="box-sub">zero API keys in pods</text>
+  <rect x="670" y="468" width="257" height="92" rx="10" fill="rgba(167,139,250,0.07)" stroke="rgba(167,139,250,0.45)"/>
+  <rect x="670" y="468" width="3.5" height="92" rx="1.75" fill="#A78BFA"/>
+  <text x="688" y="498" class="mod-title">MemoryStore</text>
+  <text x="688" y="524" class="box-sub">Atlas Vector Search default</text>
+  <text x="688" y="545" class="box-sub">EverMemOS pluggable</text>
+  <rect x="963" y="468" width="257" height="92" rx="10" fill="rgba(167,139,250,0.07)" stroke="rgba(167,139,250,0.45)"/>
+  <rect x="963" y="468" width="3.5" height="92" rx="1.75" fill="#A78BFA"/>
+  <text x="981" y="498" class="mod-title">MCP Tooling</text>
+  <text x="981" y="524" class="box-sub">load_mcp_tools()</text>
+  <text x="981" y="545" class="box-sub">servers proxied by gateway</text>
+  <rect x="1256" y="468" width="257" height="92" rx="10" fill="rgba(167,139,250,0.07)" stroke="rgba(167,139,250,0.45)"/>
+  <rect x="1256" y="468" width="3.5" height="92" rx="1.75" fill="#A78BFA"/>
+  <text x="1274" y="498" class="mod-title">A2A AgentServer</text>
+  <text x="1274" y="524" class="box-sub">agent.json · tasks/send</text>
+  <text x="1274" y="545" class="box-sub">SSE streaming</text>
+  <rect x="84" y="578" width="1432" height="32" rx="16" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.25)"/>
+  <text x="800" y="599" text-anchor="middle" style="font-size:14.5px; fill:#C4B5FD;">Deployed as type: BYO Agent pods in tenant namespaces — ambient-mesh enrolled · Kyverno auto-exposed at /a2a/{ns}/{name}</text>
+  <rect x="60" y="664" width="1480" height="108" rx="12" fill="rgba(251,191,36,0.04)" stroke="rgba(251,191,36,0.18)"/>
+  <text x="76" y="690" class="band-label" fill="#FBBF24">CONTROL PLANE</text>
+  <rect x="60" y="700" width="337" height="60" rx="10" class="box" stroke="rgba(251,191,36,0.35)"/>
+  <rect x="60" y="700" width="3.5" height="60" rx="1.75" fill="#FBBF24"/>
+  <text x="80" y="727" class="box-title">kagent controller</text>
+  <text x="80" y="749" class="box-sub">Agent · ModelConfig · MCP CRDs</text>
+  <rect x="441" y="700" width="337" height="60" rx="10" class="box" stroke="rgba(251,191,36,0.35)"/>
+  <rect x="441" y="700" width="3.5" height="60" rx="1.75" fill="#FBBF24"/>
+  <text x="461" y="727" class="box-title">mycelium</text>
+  <text x="461" y="749" class="box-sub">KRT reconciler · ecosystem CRDs</text>
+  <rect x="822" y="700" width="337" height="60" rx="10" class="box" stroke="rgba(251,191,36,0.35)"/>
+  <rect x="822" y="700" width="3.5" height="60" rx="1.75" fill="#FBBF24"/>
+  <text x="842" y="727" class="box-title">Kyverno</text>
+  <text x="842" y="749" class="box-sub">auto-HTTPRoutes · scheduling</text>
+  <rect x="1203" y="700" width="337" height="60" rx="10" class="box" stroke="rgba(251,191,36,0.35)"/>
+  <rect x="1203" y="700" width="3.5" height="60" rx="1.75" fill="#FBBF24"/>
+  <text x="1223" y="727" class="box-title">AgentRegistry</text>
+  <text x="1223" y="749" class="box-sub">agent &amp; skill catalog · discovery</text>
+  <rect x="60" y="856" width="1480" height="136" rx="12" fill="rgba(52,211,153,0.04)" stroke="rgba(52,211,153,0.18)"/>
+  <text x="76" y="882" class="band-label" fill="#34D399">DATA &amp; OBSERVABILITY</text>
+  <rect x="60" y="892" width="267" height="88" rx="10" class="box" stroke="rgba(52,211,153,0.35)"/>
+  <rect x="60" y="892" width="3.5" height="88" rx="1.75" fill="#34D399"/>
+  <text x="78" y="922" class="box-title">AWS</text>
+  <text x="78" y="948" class="box-sub">RDS PostgreSQL</text>
+  <text x="78" y="969" class="box-sub">ElastiCache · S3</text>
+  <rect x="363" y="892" width="267" height="88" rx="10" class="box" stroke="rgba(52,211,153,0.35)"/>
+  <rect x="363" y="892" width="3.5" height="88" rx="1.75" fill="#34D399"/>
+  <text x="381" y="922" class="box-title">ClickHouse</text>
+  <text x="381" y="948" class="box-sub">Langfuse analytics</text>
+  <text x="381" y="969" class="box-sub">trace storage</text>
+  <rect x="666" y="892" width="267" height="88" rx="10" class="box" stroke="rgba(52,211,153,0.35)"/>
+  <rect x="666" y="892" width="3.5" height="88" rx="1.75" fill="#34D399"/>
+  <text x="684" y="922" class="box-title">Agent Memory</text>
+  <text x="684" y="948" class="box-sub">MongoDB Atlas (default)</text>
+  <text x="684" y="969" class="box-sub">EverMemOS (paved-road)</text>
+  <rect x="969" y="892" width="267" height="88" rx="10" class="box" stroke="rgba(52,211,153,0.35)"/>
+  <rect x="969" y="892" width="3.5" height="88" rx="1.75" fill="#34D399"/>
+  <text x="987" y="922" class="box-title">Tracing</text>
+  <text x="987" y="948" class="box-sub">LangSmith · Phoenix</text>
+  <text x="987" y="969" class="box-sub">Langfuse · OTEL :4317</text>
+  <rect x="1272" y="892" width="267" height="88" rx="10" class="box" stroke="rgba(52,211,153,0.35)"/>
+  <rect x="1272" y="892" width="3.5" height="88" rx="1.75" fill="#34D399"/>
+  <text x="1290" y="922" class="box-title">Prom + Grafana</text>
+  <text x="1290" y="948" class="box-sub">metrics · dashboards</text>
+  <text x="1290" y="969" class="box-sub">Kiali topology</text>
+  <rect x="60" y="1020" width="1480" height="136" rx="12" fill="rgba(148,163,184,0.04)" stroke="rgba(148,163,184,0.18)"/>
+  <text x="76" y="1046" class="band-label" fill="#94A3B8">INFRASTRUCTURE</text>
+  <rect x="60" y="1056" width="337" height="88" rx="10" class="box" stroke="rgba(148,163,184,0.35)"/>
+  <rect x="60" y="1056" width="3.5" height="88" rx="1.75" fill="#94A3B8"/>
+  <text x="80" y="1086" class="box-title">EKS Cell Clusters</text>
+  <text x="80" y="1112" class="box-sub">ambient mesh, no sidecars</text>
+  <text x="80" y="1133" class="box-sub">multi-cell via CAPI</text>
+  <rect x="441" y="1056" width="337" height="88" rx="10" class="box" stroke="rgba(148,163,184,0.35)"/>
+  <rect x="441" y="1056" width="3.5" height="88" rx="1.75" fill="#94A3B8"/>
+  <text x="461" y="1086" class="box-title">Node Groups</text>
+  <text x="461" y="1112" class="box-sub">platform · agents · gateway</text>
+  <text x="461" y="1133" class="box-sub">tainted + autoscaled</text>
+  <rect x="822" y="1056" width="337" height="88" rx="10" class="box" stroke="rgba(148,163,184,0.35)"/>
+  <rect x="822" y="1056" width="3.5" height="88" rx="1.75" fill="#94A3B8"/>
+  <text x="842" y="1086" class="box-title">ztunnel</text>
+  <text x="842" y="1112" class="box-sub">L4 mTLS everywhere</text>
+  <text x="842" y="1133" class="box-sub">SPIFFE identity</text>
+  <rect x="1203" y="1056" width="337" height="88" rx="10" class="box" stroke="rgba(148,163,184,0.35)"/>
+  <rect x="1203" y="1056" width="3.5" height="88" rx="1.75" fill="#94A3B8"/>
+  <text x="1223" y="1086" class="box-title">Management Cluster</text>
+  <text x="1223" y="1112" class="box-sub">CAPI · CAAPH · ArgoCD</text>
+  <text x="1223" y="1133" class="box-sub">Transit Gateway</text>
+  <text x="1600" y="210" class="band-label" fill="#FB7185">EXTERNAL</text>
+  <rect x="1600" y="236" width="260" height="108" rx="10" class="box" stroke="rgba(251,113,133,0.35)"/>
+  <rect x="1600" y="236" width="3.5" height="108" rx="1.75" fill="#FB7185"/>
+  <text x="1618" y="268" class="box-title">LLM Providers</text>
+  <text x="1618" y="294" class="box-sub">Anthropic · OpenAI</text>
+  <text x="1618" y="315" class="box-sub">AI backends on gateway</text>
+  <rect x="1600" y="856" width="260" height="136" rx="10" class="box" stroke="rgba(251,113,133,0.35)"/>
+  <rect x="1600" y="856" width="3.5" height="136" rx="1.75" fill="#FB7185"/>
+  <text x="1618" y="892" class="box-title">MongoDB Atlas</text>
+  <text x="1618" y="918" class="box-sub">Vector Search</text>
+  <text x="1618" y="939" class="box-sub">Voyage AI embeddings</text>
+  <text x="1618" y="960" class="box-sub">managed · TLS :443</text>
+  <path class="edge" stroke="#60A5FA" marker-end="url(#ar-blue-dark)" d="M670 196 V272"/>
+  <text x="682" y="230" class="edge-label">HTTPS · JWT</text>
+  <path class="edge" stroke="#22D3EE" marker-end="url(#ar-cyan-dark)" d="M397 302 H441"/>
+  <text x="419" y="294" text-anchor="middle" class="edge-label">JWKS</text>
+  <path class="edge" stroke="#A78BFA" marker-end="url(#ar-violet-dark)" d="M610 332 V384"/>
+  <text x="622" y="372" class="edge-label">A2A · /a2a/{ns}/{agent}</text>
+  <path class="edge" stroke="#22D3EE" marker-end="url(#ar-cyan-dark)" d="M1370 384 V332"/>
+  <text x="1382" y="372" class="edge-label">LLM · MCP egress</text>
+  <path class="edge" stroke="#FB7185" marker-end="url(#ar-rose-dark)" d="M1540 302 H1600"/>
+  <text x="1570" y="294" text-anchor="middle" class="edge-label">TLS</text>
+  <path class="edge" stroke="#34D399" d="M20 166 V844"/>
+  <path class="edge" stroke="#34D399" stroke-dasharray="5 4" d="M60 166 H20"/>
+  <circle cx="20" cy="166" r="3.2" class="junction"/>
+  <path class="edge" stroke="#34D399" d="M60 496 H20"/>
+  <circle cx="20" cy="496" r="3.2" class="junction"/>
+  <path class="edge" stroke="#34D399" d="M60 531 H20"/>
+  <circle cx="20" cy="531" r="3.2" class="junction"/>
+  <path class="edge" stroke="#34D399" marker-end="url(#ar-emerald-dark)" d="M20 796 H799 V892"/>
+  <circle cx="20" cy="796" r="3.2" class="junction"/>
+  <text x="32" y="788" class="edge-label">memory r/w</text>
+  <path class="edge" stroke="#34D399" marker-end="url(#ar-emerald-dark)" d="M20 820 H1102 V892"/>
+  <circle cx="20" cy="820" r="3.2" class="junction"/>
+  <text x="32" y="812" class="edge-label">traces · OTLP gRPC :4317</text>
+  <path class="edge" stroke="#34D399" stroke-dasharray="5 4" marker-end="url(#ar-emerald-dark)" d="M20 844 H1405 V892"/>
+  <text x="32" y="836" class="edge-label">dashboards</text>
+  <path class="edge" stroke="#FBBF24" stroke-dasharray="5 4" marker-end="url(#ar-amber-dark)" d="M60 730 H44 V546 H60"/>
+  <text x="34" y="638" class="edge-label" fill="#FBBF24" transform="rotate(-90 34 638)" text-anchor="middle">kagent reconciles</text>
+  <path class="edge" stroke="#FB7185" marker-end="url(#ar-rose-dark)" d="M799 980 V1004 H1730 V992"/>
+  <text x="1265" y="996" text-anchor="middle" class="edge-label">vector search · embeddings</text>
+  <line x1="60" y1="1200" x2="100" y2="1200" stroke="#60A5FA" stroke-width="1.6"/>
+  <text x="108" y="1204" class="edge-label">request path</text>
+  <line x1="240" y1="1200" x2="280" y2="1200" stroke="#FBBF24" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="288" y="1204" class="edge-label">control / management</text>
+  <line x1="480" y1="1200" x2="520" y2="1200" stroke="#34D399" stroke-width="1.6"/>
+  <circle cx="500" cy="1200" r="3.2" class="junction"/>
+  <text x="528" y="1204" class="edge-label">telemetry &amp; memory bus</text>
+  <text x="1860" y="1204" text-anchor="end" class="edge-label">All east-west traffic is mTLS-encrypted via ztunnel (SPIFFE identity) — tenants never hold provider credentials.</text>
+  <text x="60" y="1250" class="edge-label" fill="#4E5B70">Agentix Platform — engineered for production agentic workloads</text>
+</svg>
