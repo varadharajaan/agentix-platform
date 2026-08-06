@@ -1,0 +1,144 @@
+<svg width="1840" height="700" viewBox="0 0 1840 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad-dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B0E17"/>
+      <stop offset="1" stop-color="#080A10"/>
+    </linearGradient>
+    <linearGradient id="titleGrad-dark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="0.55" stop-color="#E879F9"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="synGrad-dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="0.5" stop-color="#E879F9"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <radialGradient id="synGlow-dark" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#A78BFA" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow-dark" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="ar-blue-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#60A5FA"/>
+    </marker>
+    <marker id="ar-cyan-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#22D3EE"/>
+    </marker>
+    <marker id="ar-violet-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#A78BFA"/>
+    </marker>
+    <marker id="ar-amber-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#FBBF24"/>
+    </marker>
+    <marker id="ar-emerald-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#34D399"/>
+    </marker>
+    <marker id="ar-rose-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#FB7185"/>
+    </marker>
+    <marker id="ar-slate-dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#94A3B8"/>
+    </marker>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; }
+      .title { font-size: 38px; font-weight: 700; letter-spacing: 1px; }
+      .subtitle { font-size: 18px; fill: #9AA7BC; }
+      .band-label { font-size: 15px; font-weight: 700; letter-spacing: 3px; }
+      .box { fill: rgba(255,255,255,0.028); stroke-width: 1; }
+      .box-title { font-size: 19px; font-weight: 600; fill: #E7ECF4; }
+      .box-sub { font-size: 15px; fill: #93A1B8; }
+      .edge { fill: none; stroke-width: 1.6; }
+      .edge-label { font-size: 14px; fill: #7A8AA0; }
+      .junction { fill: #34D399; }
+      .mod-title { font-size: 19px; font-weight: 600; fill: #EDE9FE; }
+      .chip { fill: #141A26; stroke-width: 1.4; }
+      .chip-num { font-size: 16px; font-weight: 700; fill: #E7ECF4; }
+      .flow-label { font-size: 13px; fill: #7A8AA0; }
+    </style>
+  </defs>
+  <rect width="1840" height="700" rx="18" fill="url(#bgGrad-dark)"/>
+  <text x="60" y="48" style="font-size:28px; font-weight:700; fill:#E7ECF4;">One request through the platform</text>
+  <text x="60" y="78" class="subtitle">A2A in → LangGraph reasoning loop → governed LLM egress — with memory and tracing on the side channels</text>
+  <path class="edge" stroke="#60A5FA" stroke-dasharray="5 4" marker-end="url(#ar-blue-dark)" d="M1620 102 H220"/>
+  <text x="920" y="94" text-anchor="middle" class="flow-label">response · SSE stream</text>
+  <circle cx="220" cy="126" r="15" class="chip" stroke="#60A5FA"/>
+  <text x="220" y="131.5" text-anchor="middle" class="chip-num">1</text>
+  <rect x="110" y="152" width="220" height="108" rx="12" class="box" stroke="rgba(96,165,250,0.35)"/>
+  <rect x="110" y="152" width="3.5" height="108" rx="1.75" fill="#60A5FA"/>
+  <text x="130" y="186" class="box-title">Client</text>
+  <text x="130" y="212" class="box-sub">A2A tasks/send</text>
+  <text x="130" y="233" class="box-sub">HTTPS · JWT</text>
+  <circle cx="500" cy="126" r="15" class="chip" stroke="#22D3EE"/>
+  <text x="500" y="131.5" text-anchor="middle" class="chip-num">2</text>
+  <rect x="390" y="152" width="220" height="108" rx="12" class="box" stroke="rgba(34,211,238,0.35)"/>
+  <rect x="390" y="152" width="3.5" height="108" rx="1.75" fill="#22D3EE"/>
+  <text x="410" y="186" class="box-title">Ingress Gateway</text>
+  <text x="410" y="212" class="box-sub">verify JWT (JWKS)</text>
+  <text x="410" y="233" class="box-sub">route /a2a/{ns}/{agent}</text>
+  <circle cx="780" cy="126" r="15" class="chip" stroke="#22D3EE"/>
+  <text x="780" y="131.5" text-anchor="middle" class="chip-num">3</text>
+  <rect x="670" y="152" width="220" height="108" rx="12" class="box" stroke="rgba(34,211,238,0.35)"/>
+  <rect x="670" y="152" width="3.5" height="108" rx="1.75" fill="#22D3EE"/>
+  <text x="690" y="186" class="box-title">Tenant Waypoint</text>
+  <text x="690" y="212" class="box-sub">L7 policy · HBONE mTLS</text>
+  <text x="690" y="233" class="box-sub">namespace isolation</text>
+  <circle cx="1060" cy="126" r="15" class="chip" stroke="#A78BFA"/>
+  <text x="1060" y="131.5" text-anchor="middle" class="chip-num">4</text>
+  <rect x="950" y="152" width="220" height="108" rx="12" fill="rgba(167,139,250,0.07)" stroke="url(#synGrad-dark)" stroke-width="2" filter="url(#softGlow-dark)"/>
+  <text x="970" y="186" class="box-title">Synapse Agent</text>
+  <text x="970" y="212" class="box-sub">LangGraph loop</text>
+  <text x="970" y="233" class="box-sub">plan · act · observe</text>
+  <circle cx="1340" cy="126" r="15" class="chip" stroke="#22D3EE"/>
+  <text x="1340" y="131.5" text-anchor="middle" class="chip-num">5</text>
+  <rect x="1230" y="152" width="220" height="108" rx="12" class="box" stroke="rgba(34,211,238,0.35)"/>
+  <rect x="1230" y="152" width="3.5" height="108" rx="1.75" fill="#22D3EE"/>
+  <text x="1250" y="186" class="box-title">Egress Gateway</text>
+  <text x="1250" y="212" class="box-sub">injects real API key</text>
+  <text x="1250" y="233" class="box-sub">prompt guards · PII</text>
+  <circle cx="1620" cy="126" r="15" class="chip" stroke="#FB7185"/>
+  <text x="1620" y="131.5" text-anchor="middle" class="chip-num">6</text>
+  <rect x="1510" y="152" width="220" height="108" rx="12" class="box" stroke="rgba(251,113,133,0.35)"/>
+  <rect x="1510" y="152" width="3.5" height="108" rx="1.75" fill="#FB7185"/>
+  <text x="1530" y="186" class="box-title">LLM Provider</text>
+  <text x="1530" y="212" class="box-sub">Anthropic · OpenAI</text>
+  <text x="1530" y="233" class="box-sub">completion</text>
+  <path class="edge" stroke="#60A5FA" marker-end="url(#ar-blue-dark)" d="M330 206 H390"/>
+  <text x="360" y="198" text-anchor="middle" class="flow-label">HTTPS</text>
+  <path class="edge" stroke="#22D3EE" marker-end="url(#ar-cyan-dark)" d="M610 206 H670"/>
+  <text x="640" y="198" text-anchor="middle" class="flow-label">HBONE</text>
+  <path class="edge" stroke="#A78BFA" marker-end="url(#ar-violet-dark)" d="M890 206 H950"/>
+  <text x="920" y="198" text-anchor="middle" class="flow-label">invoke</text>
+  <path class="edge" stroke="#22D3EE" marker-end="url(#ar-cyan-dark)" d="M1170 206 H1230"/>
+  <text x="1200" y="198" text-anchor="middle" class="flow-label">LLM·MCP</text>
+  <path class="edge" stroke="#FB7185" marker-end="url(#ar-rose-dark)" d="M1450 206 H1510"/>
+  <text x="1480" y="198" text-anchor="middle" class="flow-label">TLS</text>
+  <rect x="950" y="408" width="220" height="92" rx="10" class="box" stroke="rgba(52,211,153,0.35)"/>
+  <rect x="950" y="408" width="3.5" height="92" rx="1.75" fill="#34D399"/>
+  <text x="970" y="438" class="box-title">Agent Memory</text>
+  <text x="970" y="464" class="box-sub">MongoDB Atlas</text>
+  <text x="970" y="485" class="box-sub">vector recall</text>
+  <rect x="1230" y="408" width="220" height="92" rx="10" class="box" stroke="rgba(52,211,153,0.35)"/>
+  <rect x="1230" y="408" width="3.5" height="92" rx="1.75" fill="#34D399"/>
+  <text x="1250" y="438" class="box-title">MCP Tool Servers</text>
+  <text x="1250" y="464" class="box-sub">via gateway</text>
+  <text x="1250" y="485" class="box-sub">no tool credentials</text>
+  <path class="edge" stroke="#34D399" marker-end="url(#ar-emerald-dark)" d="M1060 260 V408"/>
+  <text x="1072" y="340" class="flow-label">memory r/w</text>
+  <path class="edge" stroke="#34D399" marker-end="url(#ar-emerald-dark)" d="M1340 260 V408"/>
+  <text x="1352" y="340" class="flow-label">tool calls</text>
+  <rect x="110" y="528" width="1620" height="88" rx="10" class="box" stroke="rgba(52,211,153,0.35)"/>
+  <rect x="110" y="528" width="3.5" height="88" rx="1.75" fill="#34D399"/>
+  <text x="130" y="562" class="box-title">Tracing — LangSmith · Phoenix · Langfuse (OTEL)</text>
+  <text x="130" y="588" class="box-sub">every span: gateway · agent · tool · LLM — cost, latency, prompts, tokens</text>
+  <path class="edge" stroke="#34D399" stroke-dasharray="5 4" marker-end="url(#ar-emerald-dark)" d="M500 260 V528"/>
+  <path class="edge" stroke="#34D399" stroke-dasharray="5 4" marker-end="url(#ar-emerald-dark)" d="M1010 260 V292 H760 V528"/>
+  <path class="edge" stroke="#34D399" stroke-dasharray="5 4" marker-end="url(#ar-emerald-dark)" d="M1400 260 V300 H1560 V528"/>
+  <text x="920" y="662" text-anchor="middle" class="edge-label" fill="#5F6E86">Every hop traced · every credential injected at the proxy · every tenant isolated</text>
+</svg>
