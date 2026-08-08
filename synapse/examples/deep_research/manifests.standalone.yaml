@@ -1,0 +1,80 @@
+# Deep Research agent — STANDALONE deployment (no platform required).
+#
+# Use this when running off the Agentix platform: any Kubernetes cluster,
+# or as a reference for docker/VM deployments. You declare your own LLM
+# API key in the Secret below; the pod talks to the provider directly
+# (SYNAPSE_LLM_BASE_URL), so no AgentGateway, Keycloak, or mesh is needed.
+#
+#   kubectl create namespace agents
+#   $EDITOR manifests.standalone.yaml   # put your real key in the Secret
+#   kubectl apply -f manifests.standalone.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: deep-research-llm
+  namespace: agents
+type: Opaque
+stringData:
+  # <-- DECLARE YOUR API KEY HERE (OpenAI, or any OpenAI-compatible provider)
+  SYNAPSE_API_KEY: "sk-replace-me"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deep-research
+  namespace: agents
+  labels: { app: deep-research }
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: deep-research }
+  template:
+    metadata:
+      labels: { app: deep-research }
+    spec:
+      containers:
+        - name: agent
+          image: 268558157000.dkr.ecr.us-east-1.amazonaws.com/agentix-platform/deep-research:v0.1.0
+          ports:
+            - { name: http, containerPort: 8080 }
+          env:
+            - name: SYNAPSE_AGENT_NAME
+              value: deep-research
+            - name: PORT
+              value: "8080"
+            # --- direct LLM mode (bypasses the platform gateway) ---
+            - name: SYNAPSE_LLM_BASE_URL
+              value: "https://api.openai.com/v1"
+            - name: SYNAPSE_MODEL
+              value: "gpt-4o-mini"
+            - name: SYNAPSE_API_KEY
+              valueFrom:
+                secretKeyRef: { name: deep-research-llm, key: SYNAPSE_API_KEY }
+            # --- memory: none keeps standalone simple; point at Atlas to enable ---
+            - name: SYNAPSE_MEMORY_BACKEND
+              value: "none"
+            # - name: SYNAPSE_MONGODB_URI
+            #   valueFrom:
+            #     secretKeyRef: { name: deep-research-llm, key: SYNAPSE_MONGODB_URI }
+            # - name: VOYAGE_API_KEY
+            #   valueFrom:
+            #     secretKeyRef: { name: deep-research-llm, key: VOYAGE_API_KEY }
+          readinessProbe:
+            httpGet: { path: /healthz, port: http }
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 100m, memory: 256Mi }
+            limits: { cpu: 500m, memory: 512Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: deep-research
+  namespace: agents
+spec:
+  selector: { app: deep-research }
+  ports:
+    - { name: http, port: 80, targetPort: http }
+# Agent card:  http://deep-research.agents.svc/.well-known/agent.json
+# A2A JSON-RPC: POST http://deep-research.agents.svc/  (tasks/send, tasks/sendSubscribe)
